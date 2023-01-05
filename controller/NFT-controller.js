@@ -46,6 +46,8 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 
+
+
 router.put("/:id", async (req, res, next) => {
     try {
       const updatedNFT = await NFT.findByIdAndUpdate(req.params.id, req.body, {
