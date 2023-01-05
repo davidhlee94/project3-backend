@@ -6,11 +6,10 @@ const CollectionSchema = new mongoose.Schema(
       type: String,
       required: [true, "user name is required"],
     },
-    assets: [{
-      type: mongoose.Types.ObjectId,
+    assets: {
+      type: String, 
       required: [true, "asset is required"],
-      ref: "NFT"
-    }],
+    },
   },
   { timestamps: true }
 );
