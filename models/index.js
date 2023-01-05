@@ -1,3 +1,4 @@
 module.exports = {
-    NFT: require('./NFT')
+    NFT: require('./NFT'),
+    Collection: require('./Collection')
 };

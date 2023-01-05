@@ -16,12 +16,15 @@ const morgan = require("morgan");
 
 // IMPORT CONTROLLER(S)
 const { nftController } = require("./controller");
+const { collectionController } = require("./controller")
 // MIDDLEWARE
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json()); // app.use(express.json()) MUST GO BEFORE THE CONTROLLERS
 app.use("/nft", nftController);
+app.use("/collection", collectionController)
 app.use((err, req, res, next) => res.status(500).send(err));
+
 // TEST ROUTE -> WORKING
 app.get("/", (req, res) => {
   res.send("Sanity Check for Project 3");

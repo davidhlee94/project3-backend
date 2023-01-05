@@ -46,6 +46,26 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 
+router.put("/:id/add-collection", async (req, res, next) => {
+  try {
+    const createdCollection = await Collection.create(req.body);
+    const updatedNFT = await NFT.findByIdAndUpdate(req.params.id, {
+      $push: {
+        collection: {
+          _id: createdCollection._id,
+          collectionName: createdCollection.collectionName,
+          assets: req.params.id,
+        },
+      },
+    });
+    console.log(updatedNFT);
+    res.status(201).json({ nft: "nft added" });
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+});
+
 router.put("/:id", async (req, res, next) => {
     try {
       const updatedNFT = await NFT.findByIdAndUpdate(req.params.id, req.body, {
