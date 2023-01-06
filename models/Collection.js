@@ -34,8 +34,7 @@ const CollectionSchema = new mongoose.Schema(
     },
     collectionName: {
       type: String
-    }
-  },
+    },
   { timestamps: true }
 );
 

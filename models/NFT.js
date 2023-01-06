@@ -20,6 +20,10 @@ const NFTSchema = new mongoose.Schema(
     },
     collectionName: {
       type: String
+      },
+    description: {
+      type: String,
+      required: [true, "description is required"]
     }
   },
   { timestamps: true }

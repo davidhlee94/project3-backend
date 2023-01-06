@@ -14,6 +14,26 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// router.post("/:id/add-nft", async (req, res, next) => {
+//   try {
+//     const createdCollection = await Collection.create(req.body);
+//     const newCollection = await NFT.findByIdAndUpdate(req.params.id, {
+//       $push: {
+//         collection: {
+//           _id: createdCollection._id,
+//           collectionName: createdCollection.collectionName,
+//           assets: req.params.id,
+//         },
+//       },
+//     });
+//     console.log(newCollection);
+//     res.status(201).json({ nft: "nft created" });
+//   } catch (error) {
+//     console.log(error);
+//     return next(error);
+//   }
+// });
+
 router.post("/", async (req, res, next) => {
   try {
     const createdCollection = await Collection.create(req.body);
