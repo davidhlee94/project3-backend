@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { NFT } = require("../models");
+const { NFT, Review } = require("../models");
 
 require("../config/db.connection");
 
@@ -45,7 +45,28 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-
+router.put("/:id/add-review", async (req, res, next) => {
+  try{
+    const createdReview = await Review.create(req.body);
+    const updatedNFT = await NFT.findByIdAndUpdate(req.params.id, {
+      $push: {
+        reviews: {
+          _id: createdReview._id,
+          rating: createdReview.rating,
+          content: createdReview.content,
+          createdAt: createdReview.createdAt,
+          updatedAt: createdReview.updatedAt,
+          nft: req.params.id,
+        },
+      },
+    });
+    console.log(updatedNFT);
+    res.status(201).json({ review: "review added" });
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+})
 
 router.put("/:id", async (req, res, next) => {
     try {

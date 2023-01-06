@@ -10,6 +10,8 @@ const app = express();
 // IMPORT MONGODB CONNECTION
 require("./config/db.connection");
 
+app.use(express.json());
+
 // IMPORT MORGAN AND CORS
 const cors = require("cors");
 const morgan = require("morgan");
@@ -21,6 +23,7 @@ const { collectionController } = require("./controller")
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json()); // app.use(express.json()) MUST GO BEFORE THE CONTROLLERS
+app.use(express.urlencoded({ extended: true }));
 app.use("/nft", nftController);
 app.use("/collection", collectionController)
 app.use((err, req, res, next) => res.status(500).send(err));
