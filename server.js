@@ -17,7 +17,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 
 // IMPORT CONTROLLER(S)
-const { nftController } = require("./controller");
+const { nftController, reviewController } = require("./controller");
 
 // MIDDLEWARE
 app.use(cors());
@@ -25,7 +25,7 @@ app.use(morgan("dev"));
 app.use(express.json()); // app.use(express.json()) MUST GO BEFORE THE CONTROLLERS
 app.use(express.urlencoded({ extended: true }));
 app.use("/nft", nftController);
-
+app.use("/review", reviewController);
 app.use((err, req, res, next) => res.status(500).send(err));
 
 // TEST ROUTE -> WORKING
