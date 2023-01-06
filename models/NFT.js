@@ -18,9 +18,8 @@ const NFTSchema = new mongoose.Schema(
       type: Number,
       required: [true, "price is required"],
     },
-    collections: {
-      type: mongoose.Types.ObjectId,
-      ref: "Collection"
+    collectionName: {
+      type: String
     }
   },
   { timestamps: true }
