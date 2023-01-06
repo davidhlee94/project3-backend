@@ -33,8 +33,9 @@ const CollectionSchema = new mongoose.Schema(
       required: [true, "price is required"],
     },
     collectionName: {
-      type: String
+      type: String,
     },
+  },
   { timestamps: true }
 );
 
