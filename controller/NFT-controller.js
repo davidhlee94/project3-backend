@@ -44,6 +44,15 @@ router.delete("/:id", async (req, res, next) => {
     next(error);
   }
 });
+router.delete("/:nftID/:review", async (req, res, next) => {
+  try {
+    const deletedReview = await NFT.findById(req.params.nftID).update({$pull: {"reviews": `${req.params.review}`}})
+    res.status(202).json(deletedReview);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
 
 router.put("/:id/add-review", async (req, res, next) => {
   try{

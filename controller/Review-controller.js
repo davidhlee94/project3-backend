@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Review } = require("../models");
+const { Review, NFT } = require("../models");
 
 require("../config/db.connection");
 
@@ -17,6 +17,7 @@ router.get("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     const deletedReview = await Review.findByIdAndDelete(req.params.id);
+    
     res.status(202).json(deletedReview);
   } catch (error) {
     console.error(error);
