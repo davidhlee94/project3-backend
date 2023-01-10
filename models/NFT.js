@@ -6,6 +6,9 @@ const NFTSchema = new mongoose.Schema(
       type: String,
       required: [true, "user name is required"],
     },
+    nftOwner: {
+      type: String,
+    },
     assetName: {
       type: String,
       required: [true, "asset name is required"],

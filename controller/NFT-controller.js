@@ -76,6 +76,15 @@ router.put("/:id/add-review", async (req, res, next) => {
     return next(error);
   }
 })
+router.put("/:id/add-owner", async (req, res, next) => {
+  try{
+    const createdOwner = await NFT.findOneAndUpdate(req.params.id,req.body);
+    res.status(201).json(createdOwner);
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+})
 
 router.put("/:id", async (req, res, next) => {
     try {
